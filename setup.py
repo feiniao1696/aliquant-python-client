@@ -22,6 +22,7 @@ setup(name='aliquant-client',
         'com.aliyun.api.gateway.sdk.util'
       ],
       install_requires=[
-        "oss2"
+        "oss2",
+        "numpy"
       ]
 )

@@ -31,7 +31,7 @@ class DefaultClient:
     a, b, res = self.cli.execute(req_post)
 
     # debug
-    print res
+    # print res
 
     try:
       r = json.loads(res)

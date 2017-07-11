@@ -18,3 +18,4 @@ env
 /tmp
 /tests
 aliquant_client.egg-info
+logs/*.log

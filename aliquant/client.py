@@ -31,7 +31,7 @@ class DefaultClient:
     a, b, res = self.cli.execute(req_post)
 
     # debug
-    # print res
+    print res
 
     try:
       r = json.loads(res)
@@ -74,8 +74,11 @@ class DefaultClient:
 
         if l > nextLogPosition:
           log_stream = bucket.get_object(r['logPath'], byte_range=(nextLogPosition, l))
-          sys.stdout.write(log_stream.read())
+          log = log_stream.read()
+          sys.stdout.write(log)
           sys.stdout.flush()
+          with open('logs/job' + r['jobId'] + '.log', 'a') as the_file:
+            the_file.write(log)
           nextLogPosition = l
       except:
         pass

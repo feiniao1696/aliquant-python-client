@@ -1,6 +1,7 @@
 import aliquant.client
 
-client = aliquant.client.DefaultClient("appId", "appSecret", "endpoint")
+# client = aliquant.client.DefaultClient("24525088", "3e7af6afb851ba26b168518fae347b71", "http://aliquant.open5.net")
+client = aliquant.client.DefaultClient("24525088", "3e7af6afb851ba26b168518fae347b71", "http://test.open5.net", app_bucket="aliquant-test")
 
 code = '''
 from aliquant.runner import *
@@ -29,7 +30,7 @@ params = {
   "bar_type":"d"
 }
 
-r = client.execute(code, params)
+jobId, r = client.execute(code, params)
 
 print 'result:'
 print r

@@ -73,7 +73,7 @@ params = {
     "bar_type":"D"
 }
 
-r = client.execute(code, params)
+jobId, r = client.execute(code, params)
 
 print 'result:'
 print r

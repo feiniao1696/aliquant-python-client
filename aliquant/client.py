@@ -5,6 +5,7 @@ import json
 from com.aliyun.api.gateway.sdk import client
 from com.aliyun.api.gateway.sdk.http import request
 from com.aliyun.api.gateway.sdk.common import constant
+import result_plotter
 
 try:
   import cPickle as pickle
@@ -22,6 +23,9 @@ class DefaultClient:
     self.__bucket = app_bucket
     self.cli = client.DefaultClient(app_key=app_key, app_secret=app_secret, time_out=time_out)
     pass
+
+  def plot(self, log_file):
+    result_plotter.plot_backtest_result_curve(log_file)
 
   def execute(self, code, params):
     print "creating job"
@@ -88,7 +92,7 @@ class DefaultClient:
           result_desc = bucket.head_object(r['resultPath'])
           print 'result length is ' + str(result_desc.content_length)
           result_stream = bucket.get_object(r['resultPath'])
-          return pickle.loads(result_stream.read())
+          return r['jobId'], pickle.loads(result_stream.read())
         except:
           raise
           pass

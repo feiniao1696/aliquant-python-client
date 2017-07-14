@@ -19,7 +19,7 @@ params = {
  "datelist": ['2017-04-18', '2017-04-19']
 }
 
-r = client.execute(code, params)
+jobId, r = client.execute(code, params)
 
 print 'result:'
 print r

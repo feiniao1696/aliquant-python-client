@@ -1,8 +1,9 @@
 import aliquant.client
 import aliquant.config
 
-#client = aliquant.client.DefaultClient(aliquant.config.appId, aliquant.config.appSecret, aliquant.config.endpoint, app_bucket = aliquant.config.app_bucket)
+# TODO
 client = aliquant.client.DefaultClient(aliquant.config.appId, aliquant.config.appSecret, aliquant.config.endpoint)
+client = aliquant.client.DefaultClient(aliquant.config.appId, aliquant.config.appSecret, aliquant.config.endpoint, app_bucket = aliquant.config.app_bucket)
 
 code = '''
 from aliquant.runner import *

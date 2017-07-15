@@ -1,7 +1,9 @@
 import aliquant.client
 import aliquant.config
 
-client = aliquant.client.DefaultClient("24541860", "aea3c08e855050472743a8f963c47c43", "http://aliquant.open5.net")
+# TODO
+client = aliquant.client.DefaultClient(aliquant.config.appId, aliquant.config.appSecret, aliquant.config.endpoint)
+client = aliquant.client.DefaultClient(aliquant.config.appId, aliquant.config.appSecret, aliquant.config.endpoint, app_bucket = aliquant.config.app_bucket)
 
 client.uploadData('samples/data', 'data10')
 

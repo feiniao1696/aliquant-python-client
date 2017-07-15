@@ -1,6 +1,7 @@
 import math
 import pandas as pd
 from aliquant.runner import *
+
 def initilize(context):
     context.codes = ['600276.SH', '600479.SH', '002349.SZ', '000915.SZ', '300233.SZ', '300006.SZ', '600085.SH', '002365.SZ']
     set_stock_pool(context.codes)

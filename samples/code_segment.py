@@ -1,6 +1,9 @@
 import aliquant.client
+import aliquant.config
 
-client = aliquant.client.DefaultClient("appId", "appSecret", "endpoint")
+#client = aliquant.client.DefaultClient(aliquant.config.appId, aliquant.config.appSecret, aliquant.config.endpoint, app_bucket = aliquant.config.app_bucket)
+client = aliquant.client.DefaultClient(aliquant.config.appId, aliquant.config.appSecret, aliquant.config.endpoint)
+
 code = '''
 from aliquant.runner import *
 def run(paramdict):

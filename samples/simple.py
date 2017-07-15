@@ -1,6 +1,7 @@
 import aliquant.client
+import aliquant.config
 
-client = aliquant.client.DefaultClient("appId", "appSecret", "endpoint")
+client = aliquant.client.DefaultClient(aliquant.config.appId, aliquant.config.appSecret, aliquant.config.endpoint)
 
 code = '''
 from aliquant.runner import *
@@ -34,4 +35,4 @@ jobId, r = client.execute(code, params)
 print 'result:'
 print r
 
-client.plot('logs/job' + jobId + '.log')
+#client.plot('logs/job' + jobId + '.log')

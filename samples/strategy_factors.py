@@ -1,28 +1,13 @@
-import aliquant.client
-
-client = aliquant.client.DefaultClient("appId", "appSecret", "endpoint")
-
-code = '''
 import math
 import pandas as pd
 from aliquant.runner import *
 def initilize(context):
-    industry = get_industry_info("000538.SZ")
-    #context.codes = get_industry_stocks(industry)
     context.codes = ['600276.SH', '600479.SH', '002349.SZ', '000915.SZ', '300233.SZ', '300006.SZ', '600085.SH', '002365.SZ']
     set_stock_pool(context.codes)
 
     # set backtesting parameters
     set_commission(0.002)
-    #set_slippage(0.0)
     context.last_trade_month = None
-    # trading using local data
-    #context.stock_data = pd.read_csv("/Users/yangyao/quant_trader/AliQuant/aliquant-python-sdk/data/stock_data.csv")
-    #print context.stock_data.describe()
-
-    get_stock_fundamental_data()
-    LOGGER.info(context.fundamental_data.describe())
-    LOGGER.info(context.fundamental_data)
 
 def get_stock_fundamental_data():
     q1 = query(SEC.code, SEC.market_val, SEC.trade_market_val, SEC.pb, SEC.pe, SEC.ps).filter(Filter(SEC.code).isIn(context.codes))
@@ -60,20 +45,7 @@ def handle_bar(context, bars):
     current_date = config.getStrDate(bars.getDateTime())
     if not is_trading_day(bars):
         return
-    print "-----------------------------------running day %s----------------------------" % current_date
+    LOGGER.info("-----------------------------------running day %s----------------------------" % current_date)
     get_stock_fundamental_data()
     stocks_to_buy = get_top_stocks()
     adjust_position(stocks_to_buy)
-'''
-
-params = {
-    'start_date': '2014-01-01',
-    'end_date': '2017-01-01',
-    'init_cash': 1000000,
-    "bar_type":"D"
-}
-
-jobId, r = client.execute(code, params)
-
-print 'result:'
-print r

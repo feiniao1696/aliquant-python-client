@@ -34,3 +34,5 @@ jobId, r = client.execute(code, params)
 
 print 'result:'
 print r
+
+client.plot('logs/job' + jobId + '.log')

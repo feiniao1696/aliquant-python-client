@@ -10,6 +10,9 @@ params = {
   'end_date': '2017-01-01',
   'init_cash': 1000000,
   "bar_type":"d"
+  "commission": 0.001
+  "slippage": 0.001
+  "benchmark_code": "000905.SH"
 }
 
 def main():

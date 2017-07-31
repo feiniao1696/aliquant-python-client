@@ -10,8 +10,8 @@ params = {
   'end_date': '2017-01-01',
   'init_cash': 1000000,
   "bar_type":"d",
-  "commission": 0.001,
-  "slippage": 0.001,
+  "commission_rate": 0.0,
+  "slippage_rate": 0.0,
   "benchmark_code": "000905.SH"
 }
 

@@ -8,6 +8,7 @@ from matplotlib.ticker import ScalarFormatter
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 import sys
 
+
 def read_result_from_log(log_file):
     fileIn = open(log_file, "r")
     is_wanted_line = 0
@@ -31,20 +32,22 @@ def plot_backtest_result_curve(log_file):
     portfolio_history_data.columns = ['total_value', 'cash', 'stock_value', 'bench_value']
 
     dates_ = list(portfolio_history_data.index)
+    dates_.pop()
     dates = []
     for d in dates_:
         if d == None: 
             d = config.start_date
+       
         date = datetime.datetime.strptime(d, '%Y-%m-%d').date() 
         dates.append(date)
     #dates = [datetime.datetime.strptime(d, '%Y-%m-%d').date() for d in dates if d != None else config.start_date]
-
+    
     total_value = list(portfolio_history_data["total_value"].values)
     cash = list(portfolio_history_data["cash"].values)
     cash_value = list(portfolio_history_data["stock_value"].values)
     bench_value = list(portfolio_history_data["bench_value"].values)
-
-    
+    total_value.pop()
+    bench_value.pop()
     # xaxis tick formatter
     plt.gca().xaxis.set_major_formatter(mdates.DateFormatter('%Y-%m-%d'))
     # xaxis ticks
